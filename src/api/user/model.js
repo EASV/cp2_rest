@@ -16,6 +16,11 @@ const userSchema = new Schema({
     trim: true,
     lowercase: true
   },
+  username: {
+    type: String,
+    index: true,
+    trim: true
+  },
   password: {
     type: String,
     required: true,
@@ -70,7 +75,7 @@ userSchema.pre('save', function (next) {
 userSchema.methods = {
   view (full) {
     let view = {}
-    let fields = ['id', 'name', 'picture']
+    let fields = ['id', 'name', 'picture', 'username']
 
     if (full) {
       fields = [...fields, 'email', 'createdAt']
