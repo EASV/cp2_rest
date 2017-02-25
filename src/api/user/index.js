@@ -65,7 +65,7 @@ router.get('/:id',
  * @apiError 409 Email already registered.
  */
 router.post('/',
-  master(),
+  token({ required: true, roles: ['admin'] }),
   body({ email, password, name, picture, role }),
   create)
 
@@ -83,7 +83,7 @@ router.post('/',
  * @apiError 404 User not found.
  */
 router.put('/:id',
-  token({ required: true }),
+  token({ required: true, roles: ['admin'] }),
   body({ name, picture }),
   update)
 
