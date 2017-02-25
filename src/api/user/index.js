@@ -65,8 +65,8 @@ router.get('/:id',
  * @apiError 409 Email already registered.
  */
 router.post('/',
-  master(),
   token({ required: true, roles: ['admin'] }),
+  master(),
   body({ email, password, name, picture, role, username }),
   create)
 
