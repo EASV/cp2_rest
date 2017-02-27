@@ -4,7 +4,8 @@ import mongoose from './services/mongoose'
 import express from './services/express'
 import api from './api'
 
-const app = express(api)
+const app = express()
+app.use('api/v1', api);
 const server = http.createServer(app)
 
 mongoose.connect(mongo.uri)
